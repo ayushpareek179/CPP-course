@@ -5,7 +5,7 @@ using namespace std;
 void WorkLeisure(int a)
 {
 	if(a >= 9 && a <= 18)
-	cout<<a<<"is a valid Working Hour input"<<endl;
+	cout<<a<<" is a valid Working Hour input"<<endl;
 	else
 	cout<<"Save an hour like "<<a<<"th for leisure"<<endl;
 	
