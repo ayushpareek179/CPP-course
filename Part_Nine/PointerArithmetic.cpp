@@ -8,15 +8,16 @@ void Initialize(int* ptr, int a)
         cin>>*(ptr+i); //addition of integers
 }
 
-int* Display(int* ptr)
+int* Display(int* ptr, int n)
 {
     int* p = ptr;
-    while(*p != (int)NULL)
+    while(p != ptr+n)
     {
         cout<<*p<<" ";
         p++; //incrementation
     }
-    return p--;
+    p--;
+    return p;
 }
 
 int* RevDisplay(int* ptr, int* start)
@@ -27,7 +28,8 @@ int* RevDisplay(int* ptr, int* start)
         cout<<*p<<" ";
         p--; //decrmentation
     }
-    return p++;
+    p++;
+    return p;
 }
 
 int main()
@@ -45,10 +47,14 @@ int main()
     cout<<"Enter "<<n<<" numbers\n";
     Initialize(p,n);
     cout<<"You have entered\n";
-    int* end = Display(p); //no need to pass the size!
+    int* end = Display(p,n);
     cout<<"\nYou probably recognize\n";
     int* start = RevDisplay(p+(n-1), p); 
-    cout<<"\nSize of memory block: "<<(end-start-1)*sizeof(int)<<"\n"; //difference
+    //cout<<"\n"<<*start<<" "<<*end<<"\n";
+    //Enabled correction of last incrementation/decrementation in respective return statements
+    cout<<"\nSize of memory block: "<<(end-start+1)*sizeof(int)<<"\n"; //difference
+    delete []p;
+    p = nullptr;
     return 0;
 
 }
